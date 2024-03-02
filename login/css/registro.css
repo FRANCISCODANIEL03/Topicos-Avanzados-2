@@ -1,41 +1,74 @@
-
-body{
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
     display: flex;
+    justify-content: center;
     align-items: center;
-    flex-direction: column;
-    background: #333333;
+    height: 100vh;
+    background-color: #f4f4f4;
+}
 
-    
+form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 600px; /* Limita el ancho máximo del formulario */
+    display: flex;
+    flex-direction: row;
 }
-h1{
-    color: #FFE599;
-    margin-top: 40px;
+
+h1 {
+    text-align: left;
+    margin: 0;
 }
-form{
-    background: #999999;
-    border-color: #DDDDDD;
-    height: 75vh;
-    width: 80vw;
-    columns: 9;
+
+.data {
+    width: 50%;
+    padding-right: 20px;
+}
+
+.data div {
+    margin-bottom: 15px;
+}
+
+.data div p {
+    margin: 0;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+img {
+    display: block;
+    margin: 0 auto 20px;
+    max-width: 100%;
+}
+
+.buttons {
+    width: 50%;
     display: flex;
     flex-direction: column;
-    border-radius: 8px;
+    justify-content: flex-end;
 }
 
-input{
-    height: 38px;
-    width: 277px;
-    margin-right: 50vw;
-    text-align: center;
-    border-radius: 5px;
-}
-
-button{
-    height: 47px;
-    width: 284px;
-    background-color: #009E0F;
-    text-align: center;
-    border-radius: 5px;
-    margin-top: 3px;
+button {
+    padding: 10px 20px;
+    background-color: #007bff;
     color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-bottom: 10px;
+}
+
+button:hover {
+    background-color: #0056b3;
 }
