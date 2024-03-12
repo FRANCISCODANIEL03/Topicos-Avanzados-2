@@ -28,17 +28,41 @@
         }
         .custom-bg-orange {
             background-color: #FFFF00;
-            color: white;
+            color: black;
         }
         .custom-bg-yellow {
             background-color: #FF9900;
-            color: white;
+            color: black;
+        }
+        .custom-bg-blue{
+            background-color: #0000FF;
+            color: black;
+        }
+        .custom-bg-red{
+            background-color: #FF0000;
+            color: black;
         }
         .custom-bg-cyan{
             color: #00FFFF;
         }
         .custom-bg-s{
             background-color: #FFFFFF;
+            color: black;
+        }
+        .custom-bg-blue:hover{
+            background-color: #2B78E4;
+            color: white;
+        }
+        .custom-bg-red:hover{
+            background-color: #FF6666;
+            color: white;
+        }
+        .custom-bg-orange:hover{
+            background-color: #FFFF66;
+            color: black;
+        }
+        .custom-bg-yellow:hover{
+            background-color: #FFCC66;
             color: black;
         }
     </style>
@@ -73,12 +97,12 @@
         <div class="row mt-3">
             <h6>Operaciones disponibles:</h6>
             <div class="col">
-                <button class="btn btn-primary col-12 mb-2">SUMA</button>
-                <button class="btn custom-bg-orange col-12 mb-2">DIVISION</button>
+                <button id="sum" class="btn custom-bg-blue col-12 mb-2">SUMA</button>
+                <button id="div" class="btn custom-bg-orange col-12 mb-2">DIVISION</button>
             </div>
             <div class="col">
-                <button class="btn btn-danger col-12 mb-2">RESTA</button>
-                <button class="btn custom-bg-yellow col-12 mb-2">MULTIPLICACION</button>
+                <button id="rest" class="btn custom-bg-red col-12 mb-2">RESTA</button>
+                <button id="multi" class="btn custom-bg-yellow col-12 mb-2">MULTIPLICACION</button>
             </div>
         </div>
         <h5 class="mt-3">Resultado de la operación:</h5>
