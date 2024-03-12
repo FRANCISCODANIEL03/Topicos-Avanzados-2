@@ -1,0 +1,15 @@
+form{
+    height: 80vh;
+    background-color: #ccc;
+}
+
+a{
+    text-decoration: none;
+    color: #157347;
+}
+.w-100-text{
+    font-size: 10rem;
+}
+#Dia{
+    background-color: rgb(219, 17, 17);
+}
