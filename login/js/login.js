@@ -2,7 +2,7 @@ const form= document.getElementById("form");
 const email_input= document.getElementById("email");
 const pass_input= document.getElementById("pass");
 const mensaje= document.getElementById("mensaje");
-const usersLocal= localStorage.getItem("user");
+const usersLocal = JSON.parse(localStorage.getItem("users")) || [];
 
 const Usuarios=[
 {
@@ -23,19 +23,25 @@ const Usuarios=[
     photo: "/public/lalo.jpg"
 }];
 
+const allUsers = [...usersLocal, ...Usuarios];
+const modalLabel= document.getElementById("exampleModalLabel");
 
 const evtForm = (evt)=>{
     evt.preventDefault();
     let email= email_input.value;
     let pass= pass_input.value;
-    let userFound= Usuarios.filter((Usuarios)=>Usuarios.email===email);
-    let userFoundLoal= JSON.parse(usersLocal).filter((Usuarios)=>Usuarios.email===email);
+    let userFound= allUsers.filter((usuario)=>usuario.email===email);
+    
     mensaje.textContent="";
     if(userFound.length>0){
         if(userFound[0].password===pass){
-            alert("Bienvenido "+ userFound[0].user);
-            window.location.href="pages/home.html";
-            mensaje.style.display="none";
+            var miModal = new bootstrap.Modal(document.getElementById('exampleModal'));
+            modalLabel.textContent="Bienvenido "+userFound[0].name;
+            miModal.show();
+            document.getElementById('btnGracias').addEventListener('click', function() {
+                window.location.href="pages/home.html";
+                mensaje.style.display="none";
+            });
             localStorage.setItem("user", userFound[0].name);
             localStorage.setItem("photo", userFound[0].photo);
         }else{
