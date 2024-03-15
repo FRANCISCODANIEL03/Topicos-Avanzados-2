@@ -15,9 +15,9 @@
             border-radius: 8px;
             padding: 20px; 
         }
-        #mascota{
+        .imgFile{
             width: 350px;
-            height: 300px;
+            height: 200px;
             border: 1px dashed #DDDDDD;
         }
     </style>
@@ -56,15 +56,15 @@
                             <div class="row">
                                 
                                 <div>
-                                    <img  alt="Foto de la mascota" id="mascota">
-                                    <input type="file" name="" id="fileMascota" accept=".jpg, .jpeg, .png">
+                                    <img style="display: none;" alt="Foto de la mascota" id="mascota">
+                                    <input type="file" name="" id="fileMascota" accept=".jpg, .jpeg, .png" class="imgFile">
                                 </div>
                                 <div>
                                     <h4 class="text-dark">Numero de contacto</h4>
-                                    <input type="text" class="mb-2">
+                                    <input type="text" class="mb-5">
                                 </div>
                             </div>
-                            <div class="row">
+                            <div class="row mt-5">
                                 <button>Ver Registros</button>
                                 <button>Registrar</button>
                             </div>
@@ -75,4 +75,17 @@
         </div>
     </div>
 </body>
+<script>
+    function mostrarImagen(event){
+        event.preventDefault();
+        var archivo = event.target.files[0];
+        var lector = new FileReader();
+
+        lector.onload = function(e){
+            var img = document.getElementById("mascota");
+            img.src= e.target.result;
+        }
+        lector.readAsDataURL(archivo);
+        }
+</script>
 </html>
