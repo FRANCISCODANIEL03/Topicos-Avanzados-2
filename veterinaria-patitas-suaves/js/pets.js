@@ -17,8 +17,7 @@ petData.forEach(function(pet, index) {
                 "&petType=" + encodeURIComponent(pet.typePet) +
                 "&petCondition=" + encodeURIComponent(pet.padecimiento) +
                 "&numberOfContact=" + encodeURIComponent(pet.numberOfContact) +
-                "&description=" + encodeURIComponent(pet.Description) +
-                "&imgPet=" + encodeURIComponent(pet.imgPet);
+                "&description=" + encodeURIComponent(pet.Description);
 
 
     var img = document.createElement("img");

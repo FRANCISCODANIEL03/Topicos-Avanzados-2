@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tabla de Datos</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://unpkg.com/jspdf@latest/dist/jspdf.umd.min.js"></script>
     <style>
         body {
             background-color: #343a40; /* Color de fondo oscuro */
@@ -20,7 +21,6 @@
             color: #fff;
             border-color: #495057; /* Color de borde */
         }
-
         .table th {
             background-color: #343a40; /* Color de fondo de los encabezados */
             color: #fff; /* Color de texto claro para los encabezados */
@@ -31,39 +31,49 @@
     <div class="container">
         <h1 class="text-center mt-5">Datos de la Mascota</h1>
         <div class="table-responsive mt-4">
-            <table class="table table-bordered">
+            <table class="table table-bordered" id="tablaDatos">
                 <tbody>
                     <tr>
                         <th>Nombre del Titular:</th>
-                        <td>Nombre</td>
+                        <td id="nombreTitular"></td>
                     </tr>
                     <tr>
                         <th>Nombre de la Mascota:</th>
-                        <td>Mascota</td>
+                        <td id="nombreMascota"></td>
                     </tr>
                     <tr>
                         <th>Tipo de Mascota:</th>
-                        <td>Perro</td>
+                        <td id="tipoMascota"></td>
                     </tr>
                     <tr>
                         <th>Padecimiento:</th>
-                        <td>Padecimiento</td>
+                        <td id="padecimiento"></td>
                     </tr>
                     <tr>
                         <th>Número de Contacto:</th>
-                        <td>55050055</td>
+                        <td id="numeroContacto"></td>
                     </tr>
                     <tr>
                         <th>Descripción:</th>
-                        <td>Descripción</td>
-                    </tr>
-                    <tr>
-                        <th>Imagen:</th>
-                        <td><img src="ruta_de_la_imagen" alt="Imagen de la Mascota" class="img-fluid"></td>
+                        <td id="descripcion"></td>
                     </tr>
                 </tbody>
             </table>
+            <button class="btn-primary" id="btnImprimir">Imprimir</button>
         </div>
     </div>
+    <script src="/veterinaria-patitas-suaves/js/reporte.js"></script>
+    <script>
+        document.getElementById('btnImprimir').addEventListener('click', function() {
+            // Crear un nuevo documento PDF
+            var doc = new jsPDF();
+            
+            // Agregar el contenido de la tabla al PDF
+            doc.autoTable({ html: '#tablaDatos' });
+            
+            // Descargar el PDF
+            doc.save('datos_mascota.pdf');
+        });
+    </script>
 </body>
 </html>
