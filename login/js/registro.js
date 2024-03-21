@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 const back = document.getElementById("volver");
 const form= document.getElementById("form");
 back.addEventListener("click", function(e) {
@@ -71,9 +70,3 @@ form.addEventListener("submit", function(evt) {
     }
 });
 
-=======
-const volver= document.getElementById('volver');
-volver.addEventListener('click',()=>{
-    window.location.href="home.html";
-});
->>>>>>> c75c64f (Upload files)
