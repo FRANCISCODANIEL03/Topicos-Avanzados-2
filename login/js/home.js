@@ -1,9 +1,14 @@
 let nomnbre= document.getElementById("name");
+<<<<<<< HEAD
 nomnbre.textContent= "Bienvenido "+ localStorage.getItem("user");
+=======
+nomnbre.innerHTML= localStorage.getItem("user");
+>>>>>>> c75c64f (Upload files)
 let photo= document.getElementById("photo");
 photo.src= localStorage.getItem("photo");
 
 
+<<<<<<< HEAD
 const sumaButton = document.getElementById("sum");
 const restaButton = document.getElementById("rest");
 const divisionButton = document.getElementById("div");
@@ -68,3 +73,6 @@ multiplicacionButton.addEventListener("click", function(e) {
         operacion.textContent = "*";
     }
 });
+=======
+
+>>>>>>> c75c64f (Upload files)
