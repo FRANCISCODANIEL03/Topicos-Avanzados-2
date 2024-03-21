@@ -27,6 +27,9 @@
         input{
             width: 262px;
         }
+        #displayRegis{
+            margin-right: 70px;
+        }
     </style>
 </head>
 <body class="bg-dark">
@@ -40,23 +43,23 @@
                         <div class="col">
                             <div class="">
                                 <h4 class="text-dark ">Nombre del titular de la mascota</h4>
-                                <input type="text" class="mb-2" id="nameTitular">
+                                <input type="text" class="mb-2" required id="nameTitular">
                             </div>
                             <div>
                                 <h4 class="text-dark">Nombre de la mascota</h4>
-                                <input type="text" class="mb-2" id="namePet">
+                                <input type="text" class="mb-2" required id="namePet">
                             </div>
                             <div>
                                 <h4 class="text-dark">Raza de la mascota </h4>
-                                <input type="text" class="mb-2" id="typePet">
+                                <input type="text" class="mb-2" required id="typePet">
                             </div>
                             <div>
                                 <h4 class="text-dark" >Padecimiento</h4>
-                                <input type="text" class="mb-2" id="padecimiento">
+                                <input type="text" class="mb-2" required id="padecimiento">
                             </div>
                             <div>
                                 <h4 class="text-dark">Descripcion</h4>
-                                <input type="text" class="mb-2" id="description">
+                                <input type="text" class="mb-2" required id="description">
                             </div>
                         </div>
                         <div class="col">
@@ -64,11 +67,11 @@
                                 
                                 <div>
                                     <img style="display: none;" alt="Foto de la mascota" id="mascota">
-                                    <input type="file" name="" id="fileMascota" accept=".jpg, .jpeg, .png" class="imgFile">
+                                    <input type="file" name="" required id="fileMascota" accept=".jpg, .jpeg, .png" class="imgFile">
                                 </div>
                                 <div>
                                     <h4 class="text-dark">Numero de contacto</h4>
-                                    <input type="text" class="mb-5" id="numberOfContact">
+                                    <input type="number" required class="mb-5" id="numberOfContact">
                                 </div>
                             </div>
                             <div class="row mt-5">
@@ -92,6 +95,6 @@
       </div>
     </div>
   </div>
+<script src="js/registros.js"></script>
 </body>
-<script src="/js/registros.js"></script>
 </html>

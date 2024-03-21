@@ -3,9 +3,9 @@ const img= document.getElementById('mascota');
 const form= document.getElementById('form');
 const verRegistros= document.getElementById('displayRegis');
 
-
-
-
+verRegistros.addEventListener('click', function(e){
+    window.location.href= "pages/pets.html";
+})
 
 fileImgInput.addEventListener('change', function(){
     var reader= new FileReader();
@@ -31,7 +31,7 @@ form.addEventListener('submit', function(e){
 
     var miModal = new bootstrap.Modal(document.getElementById('exampleModal'));
     var modalLabel= document.getElementById("exampleModalLabel");
-
+    
 
     var img= "";
     if(imgPet.files.length > 0){
@@ -48,7 +48,9 @@ form.addEventListener('submit', function(e){
                 Description: description,
                 imgPet: img
             };
-            console.log(submitPet)
+            var exisitingPets= JSON.parse(localStorage.getItem('Pets')) || [];
+            exisitingPets.push(submitPet);
+            localStorage.setItem('Pets', JSON.stringify(exisitingPets));
             modalLabel.textContent="Mascota registrado exitosamente";
             miModal.show();
         }
