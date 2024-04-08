@@ -1,7 +1,8 @@
 .container{
     display: flex;
+    display: block;
     flex-direction: column;
-    width: 100vw;
+    width: 200px;
 }
 .center{
     align-items: center;
@@ -13,4 +14,5 @@
     flex-direction: column;
     padding: 1rem;
     margin: 2rem;
+    border-radius: 10px;
 }

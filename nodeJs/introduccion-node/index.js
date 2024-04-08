@@ -36,7 +36,6 @@ app.get("/suma/:numero1/:numero2", (req, res)=>{
     try{
         var numero1= parseInt(req.params.numero1);
         var numero2= parseInt(req.params.numero2);
-        
         if(isNaN(numero1) || isNaN(numero2)){
             res.status(500).send("Datos ingresados no validos");
         }
