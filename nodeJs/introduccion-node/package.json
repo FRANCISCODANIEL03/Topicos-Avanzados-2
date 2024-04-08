@@ -1,0 +1,20 @@
+{
+  "name": "introduccion-node",
+  "version": "1.0.0",
+  "description": "Introduccion a node en la clase de topicos avanzados",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js && echo \"Proyecto iniciado con dev y nodemon\" ",
+    "start": "node index.js && echo \"proyecto iniciado con start\"",
+    "test": "echo \"Hola Mundo\""
+  },
+  "author": "Francisco David Colin Lira",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "3.1.0"
+  },
+  "dependencies": {
+    "cors": "2.8.5",
+    "express": "4.19.2"
+  }
+}
