@@ -59,7 +59,23 @@ app.get("/person/:name/:age", (req, res)=>{
     `;
     res.send(resDataHTML);
 })
+
+app.post('/sumar', (req, res)=>{
+    let {numero1, numero2}= req.body
+    try{
+        numero1= parseInt(numero1);
+        numero2= parseInt(numero2);
+        if(isNaN(numero1) || isNaN(numero2)){
+            res.status(500).send("Datos ingresados no validos");
+        }
+    }catch(error){
+        res.status(500).send("Datos ingresados no validos ", error);
+    }
+    res.send(`La suma de ${numero1} + ${numero2} = ${(numero1+numero2)}`);
+});
+
+
+
 //app.put();
-//app.post();
 //app.patch();
 //app.delete();
