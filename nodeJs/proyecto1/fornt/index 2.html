@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: black;
+            color: aliceblue;
+        }
+        .container{
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            justify-content: center;
+            border: 3px solid aqua;
+            background-color: burlywood;
+            width: 400px;
+            height: 400px;
+            margin-top: 100px;
+        }
+        .form{
+            height: 350px;
+            width: 250px;
+            border: 2px solid salmon;
+            background-color: beige;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 20px;
+            flex-direction: column;
+        }
+        .productos{
+            padding: 5px;
+            width: 210px;
+
+        }
+        .btn{
+            margin: 15px;
+
+        }
+        .btns{
+            flex-direction: row;
+        }
+        .listProducts{
+            display: flex;
+            align-items: start;
+            justify-content: center;
+        }
+        ul{
+            color: bisque;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+        h3{
+            color: black;
+        }
+        h5{
+            display: flex;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+   <div class="container">
+    <h1>Tienda Abarrotes pepito</h1>
+        <form class="form" id="form">
+            <h3>Productos: </h3>
+            <select id="productos" class="productos">
+                <!-- Aqui iran los producto de mi tienda-->    
+            </select>
+            <div class="btns">
+                <button class="btn" id="comprar">Comprar</button>
+                <button class="btn" id="add">Agregar</button>
+            </div>
+        </form>
+        <div>
+            <h5 id="mensaje"></h5>
+        </div>
+    </div> 
+    <div class="listProducts">
+        <ul id="addProduct">Productos
+        </ul>
+    </div>
+    
+   <script src="js/productos.js"></script>
+</body>
+</html>
