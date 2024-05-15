@@ -14,33 +14,50 @@ const PORT= 3000;
 app.use(cors())
 app.use(express.json())
 
-app.get("/", (req, res)=>{
-    const data={
-        nombre: "Pako",
-        edad: 19
-    }
 
-    res.json(data)
-})
 
 app.listen(PORT, ()=>{
-    console.log("HOST: " + process.env.HOST)
-    console.log(`Servidor iniciado en http://localhost:${PORT}/`)
+    console.log(`Servidor iniciado en http://localhost:${PORT}`)
 });
 
 
 const connection= mysql.createConnection({
-    host: process.env.HOST,
-    user: process.env.USER,
-    password: process.env.PASSWORD,
-    port: process.env.PORT,
-    database: process.env.DATABASE
+    host: process.env.BD_HOST,
+    user: process.env.BD_USER,
+    password: process.env.BD_PASSWORD,
+    port: process.env.BD_PORT,
+    database: process.env.BD_DATABASE
+    
 })
 
 connection.connect((err)=>{
     if(err){
         console.error(err.message || "Error al conectar con la BD")
     }else{
-        console.log("Coneccion exitosa en la BD")
+        console.log("Coneccion exitosa en la BD: " + process.env.BD_DATABASE)
     }
+})
+
+
+
+app.get("/", (req, res)=>{
+    connection.query('SELECT * FROM Usuarios', (error, results)=>{
+        if(error)res.status(500).json({message: error.message || 'No se pueden obtener los datos en este momento'})
+        res.status(200).json(results)
+    })
+})
+
+app.post('/', (req, res)=>{
+    const { nombre } = req.body;
+    connection.query(`INSERT INTO Usuarios VALUES (DEFAULT, ?);`,[nombre], 
+    (err, result)=>{
+        if(err) 
+            res.status(500).json({
+            message: err.message || 'No se puedo hacer la insercion de datos'
+        });
+        res.status(200).json({
+            message: 'Datos insertados correctamente en la BD',
+            data: result
+        })
+    })
 })
