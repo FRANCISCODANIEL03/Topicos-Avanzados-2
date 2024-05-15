@@ -38,6 +38,10 @@ connection.connect((err)=>{
     }
 })
 
+connection.query('SELECT 1 + 1 AS solution', (err, result)=>{
+    if(err) console.log(err.message || 'no se puedo solucionar')
+    console.log("El resultado se la solucion es: " + result[0].solution)
+})
 
 
 app.get("/", (req, res)=>{
