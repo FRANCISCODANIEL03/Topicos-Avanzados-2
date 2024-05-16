@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ver Datos</title>
+</head>
+<style>
+    body{
+        background: linear-gradient(#1f1f20, #2b4c7e);;
+        height: 100vh;
+    }
+    .container{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+    }
+    form{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 50%;
+        height: 50%;
+        background-color: #2b4c7e;
+        border-radius: 10px;
+        box-shadow: #fff 0px 0px 10px;
+    }
+    nav{
+        display: flex;
+        justify-content: space-around;
+        padding: 10px;
+        background-color: #2b4c7e;
+        border-radius: 10px;
+    }
+    a{
+        color: aliceblue;
+        text-decoration: none;
+        &:hover{
+            color: #11766d;
+        }
+    }
+</style>
+<body>
+    <nav >
+        <a href="createData.html">Crear</a>
+        <a href="updateData.html">Actualizar</a>
+        <a href="deleteData.html">Eliminar</a>
+        <a href="allData.html">Ver</a>
+   </nav>
+    <div class="container">
+        <form action="">
+            <label for="name">id a Eliminar</label>
+            <input type="number" id="idDelete" name="idDelete">
+            <input type="submit" value="Enviar" class="btn">
+        </form>
+    </div>
+<script src="../js/"></script>
+</body>
+</html>
