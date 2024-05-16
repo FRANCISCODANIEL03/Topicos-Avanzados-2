@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ver Datos</title>
+</head>
+<style>
+    body{
+        background: linear-gradient(#1f1f20, #2b4c7e);
+      }
+    table{
+        width: 100%;
+        color: aliceblue;
+    }
+    thead{
+        background-color: #2b4c7e;
+    }
+    th, td {
+        border: 1px solid #dddddd;
+        text-align: left;
+    }
+    
+    nav{
+        display: flex;
+        justify-content: space-around;
+        padding: 10px;
+        background-color: #2b4c7e;
+        border-radius: 10px;
+    }
+    svg {
+        width: 20px; 
+        height: 20px; 
+    }
+    a{
+        color: aliceblue;
+        text-decoration: none;
+        &:hover{
+            color: #11766d;
+        }
+    }
+    h1{
+        color: aliceblue;
+        text-align: center;
+    }
+    #update{
+        background-color: #11766d;
+        width: 20px;
+    }
+    #delete{
+        background-color: #ff0000;
+        width: 20px;
+    }
+    button{
+        border-radius: 10px;
+        margin: 5px;
+    }
+        /* Estilos para el input de texto */
+    input[type="text"] {
+        background-color: transparent; /* Hace que el fondo del input sea transparente */
+        border: none; /* Elimina el borde del input */
+        color: inherit; /* Utiliza el color de texto heredado */
+        font-size: inherit; /* Utiliza el tamaño de fuente heredado */
+        width: 100%; /* Ajusta el ancho del input al 100% */
+        
+    }
+
+</style>
+<body>
+    <div class="container">
+       <nav >
+            <a href="createData.html">Crear</a>
+            <a href="allData.html">Ver</a>
+       </nav>
+        <h1>Ver Datos</h1>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>Nombre</th>
+                    <th id="update">Actualizar</th>
+                    <th id="delete">Eliminar</th>
+                </tr>
+            </thead>
+            <tbody id="data">
+                
+            </tbody>
+        </table>
+    </div>
+
+
+<script src="../js/allData.js"></script>
+</body>
+</html>
