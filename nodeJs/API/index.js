@@ -34,7 +34,7 @@ connection.connect((err)=>{
     if(err){
         console.error(err.message || "Error al conectar con la BD")
     }else{
-        console.log("Coneccion exitosa en la BD: " + process.env.BD_DATABASE)
+        console.log("Coneccion exitosa en la BD")
     }
 })
 /* --> Use for test connect to bd
@@ -46,7 +46,11 @@ connection.query('SELECT 1 + 1 AS solution', (err, result)=>{
 
 app.get("/", (req, res)=>{
     connection.query('SELECT * FROM Usuarios', (error, results)=>{
-        if(error)res.status(500).json({message: error.message || 'No se pueden obtener los datos en este momento'})
+        if(error)
+            res.status(500).json({
+                message: error.message || 'No se pueden obtener los datos en este momento'
+            })
+        
         res.status(200).json(results)
     })
 })
@@ -65,3 +69,33 @@ app.post('/', (req, res)=>{
         })
     })
 })
+
+app.patch('/', (req, res)=>{
+    const { id, nombre } = req.body;
+    connection.query(`UPDATE Usuarios SET nombre = ? WHERE id = ?`, [nombre, id], 
+    (err, result)=>{
+        if(err) 
+            res.status(500).json({
+            message: err.message || 'No se puedo hacer la actualizacion de datos'
+        });
+        res.status(200).json({
+            message: 'Datos actualizados correctamente en la BD',
+            data: result
+        })
+    })
+});
+
+app.delete('/', (req, res)=>{
+    const { id } = req.body;
+    connection.query(`DELETE FROM Usuarios WHERE id = ?`, [id], 
+    (err, result)=>{
+        if(err) 
+            res.status(500).json({
+            message: err.message || 'No se puedo hacer la eliminacion de datos'
+        });
+        res.status(200).json({
+            message: 'Datos eliminados correctamente en la BD',
+            data: result
+        })
+    })
+});
