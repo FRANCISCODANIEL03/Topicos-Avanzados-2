@@ -26,10 +26,12 @@ document.addEventListener('DOMContentLoaded', async function(e) {
         const $inputName= document.createElement('input');
         $inputName.setAttribute('type', 'text');
         $inputName.setAttribute('value', data[i].nombre);
+        $inputName.setAttribute('readonly', 'true');
         $inputName.value= data[i].nombre;
 
         $thID.textContent = data[i].id;
         $thName.appendChild($inputName)
+        
 
         // Crear botones de acción
         const $thActualizar = document.createElement('th');
@@ -37,31 +39,45 @@ document.addEventListener('DOMContentLoaded', async function(e) {
 
 
         const $btnActualizar = document.createElement('button');
-        $btnActualizar.appendChild(iconoActualizar.cloneNode(true)); // Clonar ícono SVG
+        $btnActualizar.appendChild(iconoActualizar.cloneNode(true)); 
+        let click = 0;
         $btnActualizar.addEventListener('click', function() {
-            // Lógica para actualizar aquí
-            console.log('Actualizar acción para el usuario ID:', data[i].id);
+            click++;
+            console.log('Actualizar acción para el usuario ID:', data[i].id, 'con nombre:', $inputName.value);
+            console.log(click);
+            if(click==2){
+               console.log($inputName.value);
+               $inputName.setAttribute('readonly', 'true'); 
+               click=0;
+
+            }else{
+                $inputName.removeAttribute('readonly');
+            }
         });
 
         const $btnEliminar = document.createElement('button');
-        $btnEliminar.appendChild(iconoEliminar.cloneNode(true)); // Clonar ícono SVG
+        $btnEliminar.appendChild(iconoEliminar.cloneNode(true));
         $btnEliminar.addEventListener('click', function() {
-            // Lógica para eliminar aquí
             console.log('Eliminar acción para el usuario ID:', data[i].id);
         });
 
-        // Agregar botones de acción a las celdas correspondientes
+        
 
         $thActualizar.appendChild($btnActualizar);
         $thEliminar.appendChild($btnEliminar);
 
-        // Agregar celdas a la fila
+
+        
+        $thEliminar.style.justifyContent = 'center';
+        $thEliminar.style.alignItems = 'center';
+
+     
         $tr.appendChild($thID);
         $tr.appendChild($thName);
         $tr.appendChild($thActualizar);
         $tr.appendChild($thEliminar);
 
-        // Agregar fila a la tabla
+
         tbody.appendChild($tr);
     }
 });
