@@ -78,9 +78,6 @@ A continuación se muestran capturas de pantalla de la interfaz de usuario:
 4. Haz push a la rama (`git push origin nombre-rama`).
 5. Abre un Pull Request.
 
-## Licencia
-
-Este proyecto está licenciado bajo la Licencia MIT - mira el archivo [LICENSE.md](LICENSE.md) para más detalles.
 
 ## Contacto
 
