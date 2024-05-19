@@ -6,22 +6,30 @@
     <title>Ver Datos</title>
 </head>
 <style>
+
     body{
         background: linear-gradient(#1f1f20, #2b4c7e);
-      }
-    table{
+        height: 100vh;
         width: 100%;
+        background-size: 900px 900px;
+        
+    }
+
+    table{
+        
+        width: 80%;
+        margin: 0 auto;
         color: aliceblue;
     }
     thead{
         background-color: #2b4c7e;
     }
-    th, td {
-        border: 1px solid #dddddd;
-        text-align: left;
+    th{
+        border: 1px solid #dddddd;  
     }
     
     nav{
+        margin-top: 20px;
         display: flex;
         justify-content: space-around;
         padding: 10px;
@@ -29,31 +37,30 @@
         border-radius: 10px;
     }
     svg {
-        width: 20px; 
-        height: 20px; 
+        width: 100%; 
+        height: 100%; 
     }
     a{
         color: aliceblue;
         text-decoration: none;
         &:hover{
-            color: #11766d;
+            color: #ecbe13;
+            padding: 5px;
         }
     }
     h1{
         color: aliceblue;
         text-align: center;
     }
-    #update{
-        background-color: #67be9b;
-        width: 20px;
-    }
-    #delete{
-        background-color: #ff0000;
-        width: 20px;
-    }
+
     button{
-        border-radius: 10px;
-        margin: 5px;
+        background-color: #edebe6;
+        border-radius: 10px;;
+        width: 100%;
+        height: 100%;
+        &&:hover{
+            background-color: #ecbe13;   
+        }
     }
     
     input[type="text"] {
@@ -63,7 +70,9 @@
         font-size: inherit;
         width: 100%; 
     }
-
+    #acciones{
+        width: 100px;
+    }
 </style>
 <body>
     <div class="container">
@@ -77,9 +86,8 @@
             <thead>
                 <tr>
                     <th>id</th>
-                    <th>Nombre</th>
-                    <th id="update">Actualizar</th>
-                    <th id="delete">Eliminar</th>
+                    <th style="text-align: left;">Nombre</th>
+                    <th id="acciones">Acciones</th>
                 </tr>
             </thead>
             <tbody id="data">
