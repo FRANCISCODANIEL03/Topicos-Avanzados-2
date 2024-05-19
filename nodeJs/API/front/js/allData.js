@@ -1,9 +1,50 @@
 document.addEventListener('DOMContentLoaded', async function(e) {
+    reloadDataTable(e);
+});
+
+
+async function fetchDelete(id){
+    const URL= 'http://localhost:3000';
+    const data= JSON.stringify({
+        id: id
+    });
+    const dataFetch= await fetch(URL, {
+        method: 'DELETE',
+        body: data,
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    });
+    const response= await dataFetch.json();
+    console.log(response);
+    reloadDataTable();
+}
+async function fetchUpdate(id, nombre){
+    const URL= 'http://localhost:3000';
+    const data= JSON.stringify({
+        id: id,
+        nombre: nombre
+    });
+    const dataFetch= await fetch(URL, {
+        method: 'PATCH',
+        body: data,
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    });
+    const response= await dataFetch.json();
+    console.log(response);
+    reloadDataTable();
+}
+async function reloadDataTable(e){
+
+    console.log('Recargando datos');
     const URL = 'http://localhost:3000';
     const tbody = document.getElementById('data');
     const dataFetch = await fetch(URL);
     const data = await dataFetch.json();
 
+    tbody.innerHTML = '';
     // Función para cargar contenido SVG desde un archivo
     async function cargarSVG(url) {
         const response = await fetch(url);
@@ -16,6 +57,7 @@ document.addEventListener('DOMContentLoaded', async function(e) {
     // Cargar íconos SVG
     const iconoEliminar = await cargarSVG('../resources/svgDelete.svg');
     const iconoActualizar = await cargarSVG('../resources/svgUpdate.svg');
+    const iconoSave = await cargarSVG('../resources/svgSave.svg');
 
     for(let i = 0; i < data.length; i++){
         const $tr = document.createElement('tr');
@@ -30,6 +72,7 @@ document.addEventListener('DOMContentLoaded', async function(e) {
         $inputName.value= data[i].nombre;
 
         $thID.textContent = data[i].id;
+        $thID.style.textAlign = 'center';
         $thName.appendChild($inputName)
         
 
@@ -41,24 +84,38 @@ document.addEventListener('DOMContentLoaded', async function(e) {
         const $btnActualizar = document.createElement('button');
         $btnActualizar.appendChild(iconoActualizar.cloneNode(true)); 
         let click = 0;
-        $btnActualizar.addEventListener('click', function() {
+        $btnActualizar.addEventListener('click', function(e) {
+            e.preventDefault();
             click++;
-            console.log('Actualizar acción para el usuario ID:', data[i].id, 'con nombre:', $inputName.value);
             console.log(click);
+            if(click==1){
+                $inputName.removeAttribute('readonly');
+                $btnActualizar.removeChild($btnActualizar.firstChild);
+                $btnActualizar.appendChild(iconoSave.cloneNode(true));
+                console.log('click 1');
+                $inputName.focus();
+                $inputName.select();
+            }
             if(click==2){
-               console.log($inputName.value);
+                console.log('Actualizar acción para el usuario ID:', data[i].id, 'con nombre:', $inputName.value);
+                const id= data[i].id;
+                const nombre= $inputName.value;
+                fetchUpdate(id, nombre);
                $inputName.setAttribute('readonly', 'true'); 
                click=0;
-
-            }else{
-                $inputName.removeAttribute('readonly');
+                $btnActualizar.removeChild($btnActualizar.firstChild);
+                $btnActualizar.appendChild(iconoActualizar.cloneNode(true));
             }
         });
 
         const $btnEliminar = document.createElement('button');
         $btnEliminar.appendChild(iconoEliminar.cloneNode(true));
-        $btnEliminar.addEventListener('click', function() {
+        $btnEliminar.value = 'Eliminar';
+        $btnEliminar.addEventListener('click', function(e) {
+            e.preventDefault();
             console.log('Eliminar acción para el usuario ID:', data[i].id);
+            console.log($btnEliminar.value);
+
         });
 
         
@@ -67,17 +124,20 @@ document.addEventListener('DOMContentLoaded', async function(e) {
         $thEliminar.appendChild($btnEliminar);
 
 
-        
-        $thEliminar.style.justifyContent = 'center';
-        $thEliminar.style.alignItems = 'center';
-
-     
         $tr.appendChild($thID);
         $tr.appendChild($thName);
-        $tr.appendChild($thActualizar);
-        $tr.appendChild($thEliminar);
+
+        const tr = document.createElement('tr');
+        tr.style.display = 'flex';
+        tr.style.justifyContent = 'center';
+        tr.style.alignItems = 'center';
+        
+        tr.appendChild($thActualizar);
+        tr.appendChild($thEliminar);
+
+        $tr.appendChild(tr);
 
 
         tbody.appendChild($tr);
+        }
     }
-});
