@@ -50,7 +50,7 @@ app.get("/", (req, res)=>{
             res.status(500).json({
                 message: error.message || 'No se pueden obtener los datos en este momento'
             })
-        
+            
         res.status(200).json(results)
     })
 })

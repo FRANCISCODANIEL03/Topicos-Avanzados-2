@@ -16,7 +16,6 @@ async function fetchDelete(id){
         }
     });
     const response= await dataFetch.json();
-    console.log(response);
     reloadDataTable();
 }
 async function fetchUpdate(id, nombre){
@@ -33,19 +32,18 @@ async function fetchUpdate(id, nombre){
         }
     });
     const response= await dataFetch.json();
-    console.log(response);
     reloadDataTable();
 }
 async function reloadDataTable(e){
 
-    console.log('Recargando datos');
+    console.log('Recargando datos...');
     const URL = 'http://localhost:3000';
     const tbody = document.getElementById('data');
     const dataFetch = await fetch(URL);
     const data = await dataFetch.json();
 
     tbody.innerHTML = '';
-    // Función para cargar contenido SVG desde un archivo
+
     async function cargarSVG(url) {
         const response = await fetch(url);
         const svgData = await response.text();
@@ -54,7 +52,7 @@ async function reloadDataTable(e){
         return svgElement;
     }
 
-    // Cargar íconos SVG
+
     const iconoEliminar = await cargarSVG('../resources/svgDelete.svg');
     const iconoActualizar = await cargarSVG('../resources/svgUpdate.svg');
     const iconoSave = await cargarSVG('../resources/svgSave.svg');
@@ -76,7 +74,7 @@ async function reloadDataTable(e){
         $thName.appendChild($inputName)
         
 
-        // Crear botones de acción
+
         const $thActualizar = document.createElement('th');
         const $thEliminar = document.createElement('th');
 
@@ -92,12 +90,10 @@ async function reloadDataTable(e){
                 $inputName.removeAttribute('readonly');
                 $btnActualizar.removeChild($btnActualizar.firstChild);
                 $btnActualizar.appendChild(iconoSave.cloneNode(true));
-                console.log('click 1');
                 $inputName.focus();
                 $inputName.select();
             }
             if(click==2){
-                console.log('Actualizar acción para el usuario ID:', data[i].id, 'con nombre:', $inputName.value);
                 const id= data[i].id;
                 const nombre= $inputName.value;
                 fetchUpdate(id, nombre);
@@ -108,13 +104,17 @@ async function reloadDataTable(e){
             }
         });
 
+        let clickDelete=0;
         const $btnEliminar = document.createElement('button');
         $btnEliminar.appendChild(iconoEliminar.cloneNode(true));
         $btnEliminar.value = 'Eliminar';
         $btnEliminar.addEventListener('click', function(e) {
             e.preventDefault();
-            console.log('Eliminar acción para el usuario ID:', data[i].id);
-            console.log($btnEliminar.value);
+            clickDelete++;
+            if(clickDelete==2){
+                const id= data[i].id;
+                fetchDelete(id);
+            }
 
         });
 
