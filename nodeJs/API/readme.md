@@ -3,7 +3,14 @@
 ## Descripción
 
 Este proyecto es una API RESTful que implementa las operaciones CRUD (Crear, Leer, Actualizar, Eliminar) conectada a una base de datos. La API permite gestionar datos de manera eficiente y segura. El front-end está diseñado para interactuar con esta API, proporcionando una interfaz de usuario amigable.
+# Despliegue
+Se utilizo render para desplegar esta API la cual se encuentra en la siguiente liga
+Se utilizo netlifly para desplegar la pagina web que consume la API:
 
+  1.- [liga de la API](https://api-topicos-77j7.onrender.com/)
+
+  2.- [liga de la Web](https://web-topicos.netlify.app/)
+  
 ## Tecnologías Utilizadas
 
 - **Backend**: Node.js, Express.
