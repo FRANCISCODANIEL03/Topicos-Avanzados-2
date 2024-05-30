@@ -2,7 +2,7 @@ const form= document.getElementById('form');
 
 form.addEventListener('submit', async function(e){
     e.preventDefault();
-    const URL= 'http://localhost:3000';
+    const URL= 'https://api-topicos-77j7.onrender.com/';
     const name= document.getElementById('name');
     const msg= document.getElementById('msg');
     const data= JSON.stringify({

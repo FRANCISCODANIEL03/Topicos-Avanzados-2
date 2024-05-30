@@ -53,9 +53,11 @@ async function reloadDataTable(e){
     }
 
 
-    const iconoEliminar = await cargarSVG('resources/svgDelete.svg');
-    const iconoActualizar = await cargarSVG('resources/svgUpdate.svg');
-    const iconoSave = await cargarSVG('resources/svgSave.svg');
+
+    const iconoEliminar = await cargarSVG('./resources/svgDelete.svg');
+    const iconoActualizar = await cargarSVG('./resources/svgUpdate.svg');
+    const iconoSave = await cargarSVG('./resources/svgSave.svg');
+
 
 
     for(let i = 0; i < data.length; i++){
@@ -102,6 +104,14 @@ async function reloadDataTable(e){
                click=0;
                 $btnActualizar.removeChild($btnActualizar.firstChild);
                 $btnActualizar.appendChild(iconoActualizar.cloneNode(true));
+                Swal.fire({
+                    position: "bottom-end",
+                    icon: "success",
+                    title: "Usuario actualizado",
+                    text: `El usuario ${nombre} se a actualizado`,
+                    showConfirmButton: false,
+                    timer: 2500,
+                  });
             }
         });
 
@@ -115,6 +125,15 @@ async function reloadDataTable(e){
             if(clickDelete==2){
                 const id= data[i].id;
                 fetchDelete(id);
+                Swal.fire({
+                    position: "bottom-end",
+                    icon: "success",
+                    title: "Usuario eliminado",
+                    text: `El usuario con el id ${id} se a eliminado`,
+                    showConfirmButton: false,
+                    timer: 2500,
+                    color: '#fd0a60'
+                  });   
             }
 
         });
