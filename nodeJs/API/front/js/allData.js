@@ -53,9 +53,12 @@ async function reloadDataTable(e){
     }
 
 
+
     const iconoEliminar = await cargarSVG('./resources/svgDelete.svg');
     const iconoActualizar = await cargarSVG('./resources/svgUpdate.svg');
     const iconoSave = await cargarSVG('./resources/svgSave.svg');
+
+
 
     for(let i = 0; i < data.length; i++){
         const $tr = document.createElement('tr');
