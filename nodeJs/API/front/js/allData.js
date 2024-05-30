@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', async function(e) {
 
 
 async function fetchDelete(id){
-    const URL= 'http://localhost:3000';
+    const URL= 'https://api-topicos-77j7.onrender.com/';
     const data= JSON.stringify({
         id: id
     });
@@ -19,7 +19,7 @@ async function fetchDelete(id){
     reloadDataTable();
 }
 async function fetchUpdate(id, nombre){
-    const URL= 'http://localhost:3000';
+    const URL= 'https://api-topicos-77j7.onrender.com/';
     const data= JSON.stringify({
         id: id,
         nombre: nombre
@@ -37,7 +37,7 @@ async function fetchUpdate(id, nombre){
 async function reloadDataTable(e){
 
     console.log('Recargando datos...');
-    const URL = 'http://localhost:3000';
+    const URL = 'https://api-topicos-77j7.onrender.com/';
     const tbody = document.getElementById('data');
     const dataFetch = await fetch(URL);
     const data = await dataFetch.json();
