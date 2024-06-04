@@ -125,15 +125,20 @@ async function reloadDataTable(e){
             if(clickDelete==2){
                 const id= data[i].id;
                 fetchDelete(id);
-                Swal.fire({
-                    position: "bottom-end",
-                    icon: "success",
-                    title: "Usuario eliminado",
-                    text: `El usuario con el id ${id} se a eliminado`,
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: "top-end",
                     showConfirmButton: false,
-                    timer: 2500,
-                    color: '#fd0a60'
-                  });   
+                    timer: 3000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                      toast.onmouseleave = Swal.resumeTimer;
+                    }
+                  });
+                  Toast.fire({
+                    icon: "success",
+                    title: "Usuario eliminado con exito"
+                  });
             }
 
         });
