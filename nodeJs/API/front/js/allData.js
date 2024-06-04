@@ -36,7 +36,19 @@ async function fetchUpdate(id, nombre){
 }
 async function reloadDataTable(e){
 
-    console.log('Recargando datos...');
+    const toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true
+    });
+
+    toast.fire({
+        icon: 'info',
+        title: 'Datos cargando...'
+    });
+
     const URL = 'https://api-topicos-77j7.onrender.com/';
     const tbody = document.getElementById('data');
     const dataFetch = await fetch(URL);
@@ -189,5 +201,9 @@ async function reloadDataTable(e){
 
 
         tbody.appendChild($tr);
+        toast.fire({
+            icon: 'success',
+            title: 'Datos cargados con exito'
+        });
         }
     }
