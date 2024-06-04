@@ -88,7 +88,6 @@ async function reloadDataTable(e){
         $btnActualizar.addEventListener('click', function(e) {
             e.preventDefault();
             click++;
-            console.log(click);
             if(click==1){
                 $inputName.removeAttribute('readonly');
                 $btnActualizar.removeChild($btnActualizar.firstChild);
@@ -128,6 +127,23 @@ async function reloadDataTable(e){
         $btnEliminar.addEventListener('click', function(e) {
             e.preventDefault();
             clickDelete++;
+            if(clickDelete==1){
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: "top-end",
+                    showConfirmButton: false,
+                    timer: 3000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                      toast.onmouseleave = Swal.resumeTimer;
+                    }
+                  });
+                  Toast.fire({
+                    icon: "warning",
+                    title: "¿Estas seguro que deseas eliminar este usuario?",
+                    text: "Si es asi da click en el boton de eliminar"
+                  });
+            }
             if(clickDelete==2){
                 const id= data[i].id;
                 fetchDelete(id);
