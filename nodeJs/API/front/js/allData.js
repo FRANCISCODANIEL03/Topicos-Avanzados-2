@@ -104,13 +104,19 @@ async function reloadDataTable(e){
                click=0;
                 $btnActualizar.removeChild($btnActualizar.firstChild);
                 $btnActualizar.appendChild(iconoActualizar.cloneNode(true));
-                Swal.fire({
-                    position: "bottom-end",
-                    icon: "success",
-                    title: "Usuario actualizado",
-                    text: `El usuario ${nombre} se a actualizado`,
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: "top-end",
                     showConfirmButton: false,
-                    timer: 2500,
+                    timer: 3000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                      toast.onmouseleave = Swal.resumeTimer;
+                    }
+                  });
+                  Toast.fire({
+                    icon: "success",
+                    title: "Usuario actualizado con exito"
                   });
             }
         });
