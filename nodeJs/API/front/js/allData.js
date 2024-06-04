@@ -88,6 +88,7 @@ async function reloadDataTable(e){
         $btnActualizar.addEventListener('click', function(e) {
             e.preventDefault();
             click++;
+            let nameChange= $inputName.value;
             if(click==1){
                 $inputName.removeAttribute('readonly');
                 $btnActualizar.removeChild($btnActualizar.firstChild);
@@ -115,7 +116,8 @@ async function reloadDataTable(e){
                   });
                   Toast.fire({
                     icon: "success",
-                    title: "Usuario actualizado con exito"
+                    title: "Usuario actualizado con exito",
+                    text: `El usuario con nombre '${nameChange}' ha sido actualizado a '${nombre}'`
                   });
             }
         });
@@ -159,7 +161,8 @@ async function reloadDataTable(e){
                   });
                   Toast.fire({
                     icon: "success",
-                    title: "Usuario eliminado con exito"
+                    title: "Usuario eliminado con exito",
+                    text: "El usuario con nombre: "+ data[i].nombre+" ha sido eliminado con exito"
                   });
             }
 
