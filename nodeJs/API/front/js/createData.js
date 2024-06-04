@@ -8,7 +8,7 @@ form.addEventListener('submit', async function(e){
     const data= JSON.stringify({
         nombre: name.value
     });
-    console.log(data);
+
    const dataFetch= await fetch(URL, {
         method: 'POST',
         body: data,
