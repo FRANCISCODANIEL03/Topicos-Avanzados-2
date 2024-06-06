@@ -6,12 +6,11 @@
     "background_color": "#1f1f20",
     "orientation": "portrait-primary",
     "icons": [
-        
         {
-            "src": "android/android-launchericon-144-144.png",
-            "type": "image/png",
-            "sizes": "144x144",
-            "purpose": "any"
+          "src": "android/android-launchericon-144-144.png",
+          "type": "image/png",
+          "sizes": "144x144",
+          "purpose": "any"
         },
         {
           "src": "windows11/SmallTile.scale-100.png",
