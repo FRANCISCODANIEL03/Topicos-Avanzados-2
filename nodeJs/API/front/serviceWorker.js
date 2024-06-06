@@ -3,9 +3,12 @@ const staticPage="dev-user-site-v1"
 const assets= [
     "/",
     "/index.html",
-    "/js/",
-    "/resources/",
-    "/pages/"
+    "/js/allData.js",
+    "/js/createData.js",
+    "/resources/svgDelete.svg",
+    "/resources/svgUpdate.svg",
+    "/resources/svgSave.svg",
+    "/pages/createData.html"
 ]
 
 self.addEventListener("install", (installEvent)=>{
@@ -30,7 +33,7 @@ if("serviceWorker" in navigator){
         .register("/serviceWorker.js")
         .then(res=>{console.log("serviceWorker registrado")})
         .catch(err=>{console.log("serviceWorker no registrado")})
-        console.log(navigator.geolocation, navigator.userAgent, navigator.language, navigator.permissions)
-        
+        //console.log(navigator.geolocation, navigator.userAgent, navigator.language, navigator.permissions)
+
     })
 }
