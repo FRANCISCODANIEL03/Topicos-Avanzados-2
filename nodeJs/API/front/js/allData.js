@@ -38,7 +38,7 @@ async function reloadDataTable(e){
 
     const toast = Swal.mixin({
         toast: true,
-        position: 'top-end',
+        position: 'bottom-end',
         showConfirmButton: false,
         timer: 3000,
         timerProgressBar: true
@@ -118,7 +118,7 @@ async function reloadDataTable(e){
                 $btnActualizar.appendChild(iconoActualizar.cloneNode(true));
                 const Toast = Swal.mixin({
                     toast: true,
-                    position: "top-end",
+                    position: "bottom-end",
                     showConfirmButton: false,
                     timer: 3000,
                     timerProgressBar: true,
@@ -144,7 +144,7 @@ async function reloadDataTable(e){
             if(clickDelete==1){
                 const Toast = Swal.mixin({
                     toast: true,
-                    position: "top-end",
+                    position: "bottom-end",
                     showConfirmButton: false,
                     timer: 3000,
                     timerProgressBar: true,
@@ -163,7 +163,7 @@ async function reloadDataTable(e){
                 fetchDelete(id);
                 const Toast = Swal.mixin({
                     toast: true,
-                    position: "top-end",
+                    position: "bottom-end",
                     showConfirmButton: false,
                     timer: 3000,
                     timerProgressBar: true,
