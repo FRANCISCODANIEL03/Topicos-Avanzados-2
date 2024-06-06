@@ -11,7 +11,7 @@ const assets= [
     "/pages/createData.html"
 ]
 
-self.addEventListener("install", (installEvent)=>{
+self.addEventListener('install', (installEvent)=>{
     installEvent.waitUntil(
         caches.open(staticPage).then((cache)=>{
             cache.addAll(assets);
@@ -19,16 +19,17 @@ self.addEventListener("install", (installEvent)=>{
     );
 })
 
-self.addEventListener("fetch", (fetchEvent)=>{
-    fetchEvent.respondWidth(
+self.addEventListener('fetch', (fetchEvent)=>{
+    fetchEvent.respondWith(
         caches.match(fetchEvent.request)
         .then((response)=>{
-            return response || fetch(fetchEvent.request)
+            return response || fetch(fetchEvent.request);
         })
     )
 });
-if("serviceWorker" in navigator){
-    window.addEventListener("load", ()=>{
+
+if('serviceWorker' in navigator){
+    window.addEventListener('load', ()=>{
         navigator.serviceWorker
         .register("/serviceWorker.js")
         .then(res=>{console.log("serviceWorker registrado")})
