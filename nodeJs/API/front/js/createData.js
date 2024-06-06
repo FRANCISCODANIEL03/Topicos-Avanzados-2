@@ -17,5 +17,21 @@ form.addEventListener('submit', async function(e){
         }
     });
     const response= await dataFetch.json();
-    msg.textContent= response.message;
+    if(dataFetch.status===200){
+        Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Usuario creado correctamente",
+            showConfirmButton: false,
+            timer: 1500
+          });
+    }else{
+        Swal.fire({
+            position: "center",
+            icon: "error",
+            title: "Error al crear usuario",
+            showConfirmButton: false,
+            timer: 1500
+          });
+    }
 });
