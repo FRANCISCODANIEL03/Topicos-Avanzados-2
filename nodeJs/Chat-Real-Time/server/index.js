@@ -29,9 +29,14 @@ const PORT = process.env.PORT || 3000;
 
 
 const app = express();
-app.use(cors());
+
 const server = createServer(app)
-const io = new Server(server) 
+const io = new Server(server,{
+  cors:{
+    origin: "*",
+    methods: ["GET", "POST"]
+  }
+});
 
 
 io.on('connection', (socket)=>{
@@ -39,7 +44,8 @@ io.on('connection', (socket)=>{
   socket.on('disconnect', ()=>{
     console.log('Usuario desconectado');
   })
-  socket.on('chat message', (msg)=>{
+  socket.on('chat message', (msg, auth)=>{
+    /*
     let message
     connection.query('INSERT INTO Message (content, usuario) VALUES (?, ?);', [msg, usuario], (err, results)=>{
       if(err){
@@ -48,10 +54,11 @@ io.on('connection', (socket)=>{
         message= results
       }
     });
-      
-    io.emit('chat message', msg, message)
+    */
+    console.log(msg, auth)
+    io.emit('chat message', msg)
   })
-
+  /*
   if(!socket.recovered){
     connection.query('SELECT * FROM Messages WHERE id > ?;', [lastId], (err, results)=>{
       if(err){
@@ -62,11 +69,12 @@ io.on('connection', (socket)=>{
       });
     });
   }
+  */
 
 
 });
 app.get('/', (req, res) => {
-  res.sendFile(process.cwd() + '/cliente/index.html');
+  res.send("Server online")
 });
 
 
