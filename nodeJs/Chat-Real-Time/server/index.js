@@ -16,7 +16,7 @@ const server = createServer(app)
 const io = new Server(server) 
 
 
-io.on('connection', ()=>{
+io.on('connection', (socket)=>{
   console.log('Usuario conectado');
   socket.on('disconnect', ()=>{
     console.log('Usuario desconectado');
