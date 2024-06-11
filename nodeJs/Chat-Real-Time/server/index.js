@@ -41,18 +41,29 @@ io.on('connection', (socket)=>{
   })
   socket.on('chat message', (msg)=>{
     let message
-    try{
-      connection.query('SELECT * FROM Message', (err, results)=>{
-        if(err){
-          console.log('No se pudo obtener los mensajes')
-        }
+    connection.query('INSERT INTO Message (content, usuario) VALUES (?, ?);', [msg, usuario], (err, results)=>{
+      if(err){
+        console.log('No se pudo obtener los mensajes')
+      }else{
         message= results
-      })
-    }catch(err){
-      console.log(err)
-    }
-    io.emit('chat message', message)
+      }
+    });
+      
+    io.emit('chat message', msg, message)
   })
+
+  if(!socket.recovered){
+    connection.query('SELECT * FROM Messages WHERE id > ?;', [lastId], (err, results)=>{
+      if(err){
+        console.log(err)
+      }
+      results.forEach(row => {
+        socket.emit('chat message', results.content, results.id.toSring());
+      });
+    });
+  }
+
+
 });
 app.get('/', (req, res) => {
   res.sendFile(process.cwd() + '/cliente/index.html');
