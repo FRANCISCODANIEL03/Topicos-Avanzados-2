@@ -40,7 +40,18 @@ io.on('connection', (socket)=>{
     console.log('Usuario desconectado');
   })
   socket.on('chat message', (msg)=>{
-    io.emit('chat message', msg)
+    let message
+    try{
+      connection.query('SELECT * FROM Message', (err, results)=>{
+        if(err){
+          console.log('No se pudo obtener los mensajes')
+        }
+        message= results
+      })
+    }catch(err){
+      console.log(err)
+    }
+    io.emit('chat message', message)
   })
 });
 app.get('/', (req, res) => {
