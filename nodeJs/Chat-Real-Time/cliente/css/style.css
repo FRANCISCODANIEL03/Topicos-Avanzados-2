@@ -35,8 +35,7 @@ form {
 input {
     width: 90%;
     height: 70%;
-    margin: 5px auto;
-    margin-bottom: 13px;
+    margin: 13px auto;
     border: none;
     display: flex;
     border-radius: 10px;
@@ -46,9 +45,8 @@ input {
 button {
     width: 90%;
     height: 70%;
-    margin: 5px auto;
+    margin: 13px auto;
     border: none;
-    margin-bottom: 13px;
     border-radius: 10px;
     font-size: 1.2em;
     background: #0ca5b0;
@@ -67,12 +65,24 @@ button {
     color: #000;
 }
 li{
-    background: #a5b3aa;
-    border-radius: 20px;
+    border-radius: 10px;
     padding: 5px;
     padding-left: 20px;
-    width: auto;
-    max-width: 40%;
     margin: 8px;
     list-style: none;
+}
+.message-left {
+    background: #a5b3aa;
+    text-align: start;
+    margin-left: 10px;
+    max-width: 40%;
+
+}
+
+.message-right {
+    background: #d6dd90;
+    text-align: start;
+    margin-right: 10px;
+    margin-left: auto;
+    max-width: 40%;
 }
