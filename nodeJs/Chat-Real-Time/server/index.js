@@ -45,31 +45,29 @@ io.on('connection', (socket)=>{
     console.log('Usuario desconectado');
   })
   socket.on('chat message', (msg, auth)=>{
-    /*
-    let message
-    connection.query('INSERT INTO Message (content, usuario) VALUES (?, ?);', [msg, usuario], (err, results)=>{
+    connection.query('INSERT INTO Message (content, usuario) VALUES (?, ?);', [msg, auth], (err, results)=>{
       if(err){
         console.log('No se pudo obtener los mensajes')
-      }else{
-        message= results
       }
+    console.log({user: auth, message: msg})
+    io.emit('chat message', msg, auth)
     });
-    */
-    console.log(msg, auth)
-    io.emit('chat message', msg)
   })
-  /*
+
   if(!socket.recovered){
-    connection.query('SELECT * FROM Messages WHERE id > ?;', [lastId], (err, results)=>{
-      if(err){
-        console.log(err)
-      }
-      results.forEach(row => {
-        socket.emit('chat message', results.content, results.id.toSring());
-      });
+    connection.query('SELECT * FROM Message WHERE id > (?);',[socket.handshake.auth.serverOffset], (err, results) => {
+        if (err) {
+            console.log('No se pudo obtener el último mensaje', err);
+            return;
+        }
+        results.forEach(row => {
+          console.log( row.content, socket.handshake.auth.serverOffset)
+          io.emit('chat message',  row.content, row.usuario, socket.handshake.auth.serverOffset);
+        });
+    
     });
   }
-  */
+
 
 
 });
