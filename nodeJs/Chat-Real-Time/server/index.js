@@ -29,9 +29,14 @@ const PORT = process.env.PORT || 3000;
 
 
 const app = express();
-app.use(cors());
+
 const server = createServer(app)
-const io = new Server(server) 
+const io = new Server(server,{
+  cors:{
+    origin: "*",
+    methods: ["GET", "POST"]
+  }
+});
 
 
 io.on('connection', (socket)=>{
@@ -39,23 +44,35 @@ io.on('connection', (socket)=>{
   socket.on('disconnect', ()=>{
     console.log('Usuario desconectado');
   })
-  socket.on('chat message', (msg)=>{
-    let message
-    try{
-      connection.query('SELECT * FROM Message', (err, results)=>{
-        if(err){
-          console.log('No se pudo obtener los mensajes')
-        }
-        message= results
-      })
-    }catch(err){
-      console.log(err)
-    }
-    io.emit('chat message', message)
+  socket.on('chat message', (msg, auth)=>{
+    connection.query('INSERT INTO Message (content, usuario) VALUES (?, ?);', [msg, auth], (err, results)=>{
+      if(err){
+        console.log('No se pudo obtener los mensajes')
+      }
+    console.log({user: auth, message: msg})
+    io.emit('chat message', msg, auth)
+    });
   })
+
+  if(!socket.recovered){
+    connection.query('SELECT * FROM Message WHERE id > (?);',[socket.handshake.auth.serverOffset], (err, results) => {
+        if (err) {
+            console.log('No se pudo obtener el último mensaje', err);
+            return;
+        }
+        results.forEach(row => {
+          console.log( row.content, socket.handshake.auth.serverOffset)
+          io.emit('chat message',  row.content, row.usuario, socket.handshake.auth.serverOffset);
+        });
+    
+    });
+  }
+
+
+
 });
 app.get('/', (req, res) => {
-  res.sendFile(process.cwd() + '/cliente/index.html');
+  res.send("Server online")
 });
 
 
