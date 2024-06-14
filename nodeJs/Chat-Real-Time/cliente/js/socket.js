@@ -7,7 +7,7 @@ const getUsername=()=>{
     return users[randomUser];
 }
 
-const socket = io('https://topicos-avanzados.onrender.com:10000',{
+const socket = io('https://topicos-avanzados.onrender.com',{
     auth: {
         username: getUsername(),
         serverOffset: 0
