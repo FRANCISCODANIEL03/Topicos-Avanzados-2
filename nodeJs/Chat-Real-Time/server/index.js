@@ -44,13 +44,13 @@ io.on('connection', (socket)=>{
   socket.on('disconnect', ()=>{
     console.log('Usuario desconectado');
   })
-  socket.on('chat message', (msg, auth)=>{
+  socket.on('chat message', (msg, auth, serverOffset)=>{
     connection.query('INSERT INTO Message (content, usuario) VALUES (?, ?);', [msg, auth], (err, results)=>{
       if(err){
         console.log('No se pudo obtener los mensajes')
       }
-    console.log({user: auth, message: msg})
-    io.emit('chat message', msg, auth)
+    console.log({user: auth, message: msg, serverOffset})
+    io.emit('chat message', msg, auth, serverOffset)
     });
   })
 
@@ -62,7 +62,7 @@ io.on('connection', (socket)=>{
         }
         results.forEach(row => {
           console.log( row.content, socket.handshake.auth.serverOffset)
-          io.emit('chat message',  row.content, row.usuario, socket.handshake.auth.serverOffset);
+          socket.emit('chat message',  row.content, row.usuario, socket.handshake.auth.serverOffset);
         });
     
     });
