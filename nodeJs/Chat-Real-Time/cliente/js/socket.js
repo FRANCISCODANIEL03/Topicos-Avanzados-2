@@ -7,7 +7,7 @@ const getUsername=()=>{
     return users[randomUser];
 }
 
-const socket = io('https://topicos-avanzados.onrender.com',{
+let socket = io('https://topicos-avanzados.onrender.com',{
     auth: {
         username: getUsername(),
         serverOffset: 0
@@ -24,7 +24,7 @@ socket.on('chat message', (msg, sender, serverOffset)=>{
     const msgg= [`<strong>${sender}:</strong> <br>${msg}</br>`, `${msg}`];
     item.innerHTML = (sender=== socket.auth.username)? msgg[1] : msgg[0];
     
-    console.log(sender, 'server', socket.auth.username)
+
     if(sender=== socket.auth.username){
         item.classList.add('message-right')
     }else{
