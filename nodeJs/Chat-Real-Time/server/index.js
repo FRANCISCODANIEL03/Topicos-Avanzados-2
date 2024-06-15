@@ -25,6 +25,24 @@ connection.connect(function(err) {
 });
 
 
+const createTable=`CREATE TABLE IF NOT EXISTS TABLE Message(
+	id INTEGER(3) NOT NULL AUTO_INCREMENT,
+	content VARCHAR(50) NOT NULL,
+	usuario VARCHAR(40) NOT NULL,
+	
+	CONSTRAINT Message_id_pk
+		PRIMARY KEY (id)
+);
+`
+
+connection.query(createTable, (err, results)=>{
+  if(err){
+    console.log('No se pudo crear la tabla')
+  }
+});
+
+
+
 const PORT = process.env.PORT || 3000;
 
 
