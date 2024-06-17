@@ -1,9 +1,9 @@
 {
     "name":"Chat IO",
-    "short_name":"CHAT_IO",
+    "short_name":"CHAT FF IO",
     "start_url":"index.html",
     "display":"standalone",
-    "background_color":"#000",
+    "background_color":"#0ca5b0",
     "orientation":"portrait-primary",
     "icons": [
     {
