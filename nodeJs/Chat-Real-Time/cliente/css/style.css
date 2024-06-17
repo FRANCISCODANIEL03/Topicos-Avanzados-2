@@ -102,5 +102,8 @@ li{
     bottom{
         width: 50px;
     }
+    section{
+        height: 60%;
+    }
    
 }
