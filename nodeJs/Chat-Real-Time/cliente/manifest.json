@@ -1,6 +1,6 @@
 {
-    "name":"Chat FF IO",
-    "short_name":"CHAT FF IO",
+    "name":"Chat IO - FF",
+    "short_name":"Chat IO",
     "start_url":"index.html",
     "display":"standalone",
     "background_color":"#0ca5b0",
