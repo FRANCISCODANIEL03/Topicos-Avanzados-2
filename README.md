@@ -17,7 +17,7 @@ Este curso de Tópicos de Programación se centra en el desarrollo de aplicacion
 **Descripción:** Envía mensajes en tiempo real y que salgan a los demás usuarios, todo en tiempo real
 
 - **Tecnologías utilizadas:** Node.js, JavaScript
-- **Despliegue:** Aún no desplegado
+- **Despliegue:** https://chat-ff-io.netlify.app/
 - **Codigo Fuente:** [ Github - Chat en tiempo real](https://github.com/itsFDavid/Topicos-Avanzados/tree/main/nodeJs/Chat-Real-Time)
 
 ## Lo que he aprendido
